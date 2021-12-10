@@ -1,0 +1,4 @@
+docker exec -it ubun bash #to enter the container, and then:
+apt-get update
+apt-get install curl
+echo "input website"; read website; echo "Searching"; sleep 1; curl http://$website

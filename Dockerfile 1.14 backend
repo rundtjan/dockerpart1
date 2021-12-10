@@ -1,0 +1,19 @@
+FROM ubuntu
+
+WORKDIR /mydir
+
+RUN apt-get update && apt-get install wget -y
+
+RUN wget https://go.dev/dl/go1.17.3.linux-amd64.tar.gz
+
+RUN tar -C /usr/local -xzf go1.17.3.linux-amd64.tar.gz
+
+ENV PATH=$PATH:/usr/local/go/bin
+
+ENV REQUEST_ORIGIN=http://localhost:5000
+
+COPY . .
+
+RUN go build
+
+CMD ./server
